@@ -1,0 +1,83 @@
+<canvas id="canvas" width="400" height="700"
+  style="background:#0e83f5"></canvas>
+
+<script type="text/javascript">
+  //requestAnimationFrame兼容
+  (function () {
+    var vendors = ['webkit', 'moz'];
+    for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
+      var vp = vendors[i];
+      window.requestAnimationFrame = window[vp + 'RequestAnimationFrame'];
+      window.cancelAnimationFrame = window[vp + 'CancelAnimationFrame'] || window[vp + 'CancelRequestAnimationFrame'];
+    }
+    if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) // iOS6 is buggy
+      ||
+      !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+      var lastTime = 0;
+      window.requestAnimationFrame = function (callback) {
+        var now = Date.now();
+        console.log(now);
+        var nextTime = Math.max(lastTime + 16, now);
+        return setTimeout(function () {
+          callback(lastTime = nextTime);
+        }, nextTime - now);
+      };
+      window.cancelAnimationFrame = clearTimeout;
+    }
+  })();
+
+  function drawChart(radius) {
+    var canvas = document.getElementById('canvas'),
+      ctx = canvas.getContext('2d'),
+      cWidth = canvas.width,
+      cHeight = canvas.height,
+      score = 100
+      totalScore = 360
+      deg0 = Math.PI / 180,  //20度
+      deg1 = Math.PI * 2;   //总度数--  260度
+
+      (function drawFrame() {
+
+        ctx.save();
+        ctx.clearRect(0, 0, cWidth, cHeight);
+        ctx.translate(cWidth / 2, cHeight / 2);
+        ctx.rotate(0);
+
+        //运动轨迹
+        var aim = score / totalScore * deg1;   //分比总分 *总弧度
+        window.requestAnimationFrame(drawFrame);
+
+        ctx.save();;//固定文字
+        ctx.rotate(0);
+        ctx.fillStyle = '#fff';
+        ctx.font = '20px Microsoft yahei';
+        ctx.textAlign = 'center';
+        ctx.fillText('目标分', 0, 28);
+        ctx.restore();
+
+        ctx.save();//黄色运动轨迹
+        ctx.beginPath();
+        ctx.lineWidth = radius / 10;
+        ctx.strokeStyle = 'rgba(254, 209, 102, 1)';
+        ctx.lineCap = "round";
+        ctx.arc(0, 0, radius * 19 / 22, Math.PI, Math.PI*1.5, false);
+        ctx.stroke();
+        ctx.restore();
+        ctx.restore();
+      })();
+
+    function text(process) {
+      ctx.save();
+      ctx.rotate(0);
+      ctx.fillStyle = '#fff';
+      ctx.font = '50px Microsoft yahei';
+      ctx.textAlign = 'center';
+      ctx.textBaseLine = 'top';
+      ctx.fillText(process, 0, -10);
+      ctx.restore();
+    }
+  };
+
+  //参数是半径
+  drawChart(120);
+</script>

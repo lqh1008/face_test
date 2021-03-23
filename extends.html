@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // //构造函数式继承
+    // // 父类构造函数
+    // function Parent(color) {
+    //   this.color = color;
+    //   this.print = function () {
+    //     console.log(this.color);
+    //   }
+    // }
+
+    // // 子类构造函数
+    // function Son(color) {
+    //   Parent.call(this, color);
+    // }
+
+    // // 测试
+    // var son1 = new Son('red');
+    // son1.print(); // red
+
+    // var son2 = new Son('blue');
+    // son2.print(); // blue
+
+    // /////////////////////////////////////////////////////////////////////////
+
+    // var obj = {
+    //   color: 'red',
+    //   print: function () {
+    //     console.log(this.color);
+    //   }
+    // };
+
+    // var son1 = Object.create(obj);
+    // son1.print(); // red
+
+    // // var son2 = Object.create(obj);
+    // // son2.print(); // red
+
+    // ////////////////////////////////////////////////////////////////////////////////
+    // function Parent(color) {
+    //   this.color = color;
+    // }
+    // Parent.prototype.print = function () {
+    //   console.log(this.color);
+    // }
+    // function Son(color) {
+    //   Parent.call(this, color);
+    // }
+    // Son.prototype = Object.create(Parent.prototype);
+    // Son.prototype.constructor = Son;
+
+    // var son1 = new Son('red');
+    // son1.print(); // red
+
+    // var son2 = new Son('blue');
+    // son2.print(); // blue
+
+
+    // function SuperClass(age) {
+    //   this.name = "super";
+    //   this.age = age;
+    //   // 不能被复用
+    //   this.say = function () {
+    //     console.log("wo shi super");
+    //   };
+    // }
+    // //不能被继承
+    // SuperClass.prototype.print = function () {
+    //   console.log("wo shi super");
+    // };
+
+    // function SubClass() {
+    //   SuperClass.call(this, 123);
+    // }
+
+    // SubClass.prototype = SuperClass.prototype
+    // const instance = new SubClass();
+    // console.log(instance.age);
+    // instance.print()
+
+
+
+    // var sData = 'Wisen';
+
+    // function display() {
+    //   console.log('sData value is %s ', this.sData);
+    // }
+
+    // display.call();  // sData value is Wisen
+
+
+    // function Parent(name) {
+    //   this.info = { name: name };
+    // }
+
+    // function Child(name) {
+    //   //继承自Parent，并传参
+    //   Parent.call(this, name);
+    //   //实例属性
+    //   this.age = 18
+    // }
+
+    // let child1 = new Child("yhd");
+    // console.log(child1.info.name); // "yhd"
+    // console.log(child1.age); // 18
+
+    // let child2 = new Child("wxb");
+    // console.log(child2.info.name); // "wxb"
+    // console.log(child2.age); // 18
+
+
+    // function Parent(name) {
+    //   this.name = name
+    //   this.colors = ["red", "blue", "yellow"]
+    // }
+    // Parent.prototype.sayName = function () {
+    //   console.log(this.name);
+    // }
+
+    // function Child(name, age) {
+    //   // 继承父类属性
+    //   Parent.call(this, name)
+    //   this.age = age;
+    // }
+    // // 继承父类方法
+    // Child.prototype = new Parent();
+
+    // Child.prototype.sayAge = function () {
+    //   console.log(this.age);
+    // }
+
+    // let child1 = new Child("yhd", 19);
+    // child1.colors.push("pink");
+    // // console.log(child1.colors); // ["red", "blue", "yellow", "pink"]
+    // child1.sayAge(); // 19
+    // child1.sayName(); // "yhd"
+    // console.log(child1);
+
+    // let child2 = new Child("wxb", 30);
+    // // console.log(child2.colors);  // ["red", "blue", "yellow"]
+    // child2.sayAge(); // 30
+    // child2.sayName(); // "wxb"
+
+    // function Cat(name, color) {
+    //   this.name = name;
+    //   this.type = 'animal'
+    //   this.color = color;
+    // }
+    // var cat1 = new Cat("大毛", "黄色");
+    // var cat2 = new Cat("二毛", "黑色");
+    // cat1.age = 16
+    // // alert(cat1.name); // 大毛
+    // // alert(cat1.color); // 黄色
+    // console.log(cat1);
+    // console.log(cat2);
+
+    // function Parent() {
+    //   this.name = 'kevin';
+    //   this.names = ['kevin', 'daisy'];
+    // }
+    // Parent.prototype.getName = function () {
+    //   console.log(this.name);
+    // }
+    // function Child() { }
+
+    // Child.prototype = new Parent();
+
+    // var child1 = new Child();
+    // child1.names.push('yayu');
+    // child1.age = 18;
+    // console.log(child1);
+
+    // var child2 = new Child();
+    // console.log(child2);
+
+    // var child3 = new Parent()
+    // console.log(child3);
+
+    // 示例：
+    function Parent() {
+      this.isShow = true
+      this.info = {
+        name: "yhd",
+        age: 18,
+      };
+    }
+
+    Parent.prototype.getInfo = function () {
+      console.log(this.info);
+      console.log(this.isShow);
+    }
+
+    function Child() { };
+    Child.prototype = new Parent();
+
+    let child1 = new Child();
+    child1.info.gender = "男";
+    child1.isShow = false
+    child1.add = 22
+
+    let child2 = new Child();
+    console.log(child1);
+    console.log('====================================================');
+    console.log(child2);
+
+  </script>
+</body>
+
+</html>

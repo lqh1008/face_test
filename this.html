@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function add() {
+    //   "use strict"
+    //   console.log(this);
+    // }
+    // add()
+
+    // const abb = () => {
+    //   console.log(this);
+    // }
+    // abb()
+
+    // function Add() {
+    //   console.log(this);
+    // }
+    // new Add()
+
+    const obj = {
+      add: () => {
+        console.log('add===>', this);
+        const addadd = setTimeout(() => {
+          console.log('addadd', this);
+        }, 1000)
+      },
+      reduce() {
+        console.log('reduce===>', this);
+        const reducereduce = () => {
+          console.log('reducereduce', this);
+          setTimeout(() => {
+            console.log('reducereduceInner', this);
+          }, 1000)
+        }
+        reducereduce()
+      },
+      sum: function () {
+        console.log('sum===>', this);
+      }
+    }
+    obj.add()
+    obj.reduce()
+    obj.sum()
+
+    // const person = {
+    //   lv: 1111
+    // }
+    // person.tao = 222
+    // for (let i in person) {
+    //   console.log(i);
+    // }
+    // console.log(person);
+    // console.log(JSON.parse(JSON.stringify(person)));
+    // console.log(person);
+    // person.gao = 333
+
+
+    function a(){
+      function b(){
+        console.log(this);
+      }
+      b()
+    }
+    a()
+  </script>
+</body>
+
+</html>

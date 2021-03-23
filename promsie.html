@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // const promise1 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve('success')
+    //   }, 1000)
+    // })
+    // const promise2 = promise1.then(() => {
+    //   throw new Error('error!!!')
+    // })
+    // console.log('promise1', promise1)
+    // console.log('promise2', promise2)
+    // setTimeout(() => {
+    //   console.log('promise1', promise1)
+    //   console.log('promise2', promise2)
+    // }, 2000)
+
+    // console.log(typeof(Promise));
+    // function foo() {
+    //   setTimeout(foo, 0)
+    // }
+    // console.log(foo());
+
+    // setTimeout(function () {
+    //   console.log(3);
+    // }, 0);
+    // Promise.resolve().then(function () {
+    //   console.log(2);
+    // });
+    // console.log(1);
+
+    // const promise1 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve("success");
+    //     console.log("timer1");
+    //   }, 1000);
+    //   console.log("promise1里的内容");
+    // });
+    // const promise2 = promise1.then(() => {      //promise1里的内容  promise1  promise2  promise5  timer1   promise3  promise4 timer2 promise1 promise2 promsie6
+    //   // throw new Error("error!!!");
+    //   Promise.resolve().then(() => {
+    //     console.log('promise3');
+    //     setTimeout(() => {
+    //       console.log("promise6");
+    //     }, 1000);
+    //     Promise.resolve().then(console.log('promise4'))
+    //   })
+    // });
+    // console.log("promise1", promise1);
+    // console.log("promise2", promise2);
+    // Promise.resolve().then(console.log('promise5'))
+    // setTimeout(() => {
+    //   console.log("timer2");
+    //   console.log("promise1", promise1);
+    //   console.log("promise2", promise2);
+    // }, 2000);
+
+    // const obj={}
+    // console.log(obj.a=1);
+    // console.log(obj.a);
+
+
+    // const promise = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     console.log('timer')
+    //     resolve('success')
+    //   }, 1000)
+    // })
+    // const start = Date.now();
+    // promise.then(res => {
+    //   console.log(res, Date.now() - start)
+    // })
+    // promise.then(res => {
+    //   console.log(res, Date.now() - start)
+    // })
+
+    // const promise = Promise.resolve().then(() => {
+    //   console.log(1111);
+    //   return promise;
+    // })
+    // promise.catch(console.err)
+
+
+    // function foo() {
+    //   console.log(1111);
+    //   return Promise.resolve().then(foo)  
+    // }
+    // foo()
+    // return Promise.resolve.then(Promise.resolve())
+    // let a = 1
+    // function foo() {
+    //   console.log(111);
+    //   setTimeout(foo(), 1000)
+    // }
+    // foo()
+
+    // let a = 1
+    // function foo() {
+    //   console.log(a++);
+    //   setTimeout(() => {
+    //     console.log(a++);
+    //     setTimeout(() => {
+    //       console.log(a++);
+    //       setTimeout(foo, 1000)
+    //     }, 1000)
+    //   }, 1000)
+    // }
+    // foo()
+
+    // const qqq = function () {
+    //   console.log(a++);
+    //   setTimeout(foo, 1000)
+    // }
+
+    // function foo() {
+    //   console.log(11111);
+    //   setTimeout(foo(), 1000)
+    // }
+    // foo()
+
+    // function foo() {
+    //   console.log(11111);
+    //   setTimeout(() => {
+    //     console.log(11111);
+    //     setTimeout(foo(), 1000)
+    //   }, 1000)
+    // }
+    // foo()
+    // confirm(111)
+
+    // const promise = new Promise((resolve, reject) => {
+    //   resolve("success2");
+    //   reject("error");
+    // });
+    // promise
+    //   .then(res => {
+    //     console.log("then1: ", res);
+    //   }).then(res => {
+    //     console.log("then2: ", res);
+    //   }).then(res => {
+    //     console.log("then3: ", res);
+    //   }).catch(err => {
+    //     console.log("catch: ", err);
+    //   })
+
+    // Promise.resolve(1)
+    //   .then(2)
+    //   .then(Promise.resolve(3))
+    //   .then(console.log)
+    // console.log(typeof(console.log));
+
+    // function runAsync(x) {
+    //   const p = new Promise(r =>
+    //     setTimeout(() => r(x, console.log(x)), 1000))
+    //   return p
+    // }
+    // runAsync(1)
+    // runAsync(2)
+    // runAsync(3)
+    // function runAsync(x) {
+    //   const p = new Promise(r => setTimeout(() => r(x), 1000))
+    //   return p
+    // }
+    // Promise.all([runAsync(1), runAsync(2), runAsync(3)])
+    //   .then(res => console.log(res))
+
+
+    // class Promise {
+    //   constructor(executor) {
+    //     // 初始化state为等待态
+    //     this.state = 'pending';
+    //     // 成功的值
+    //     this.value = undefined;
+    //     // 失败的原因
+    //     this.reason = undefined;
+    //     let resolve = value => {
+    //       // state改变,resolve调用就会失败
+    //       if (this.state === 'pending') {
+    //         // resolve调用后，state转化为成功态
+    //         this.state = 'fulfilled';
+    //         // 储存成功的值
+    //         this.value = value;
+    //       }
+    //     };
+    //     let reject = reason => {
+    //       // state改变,reject调用就会失败
+    //       if (this.state === 'pending') {
+    //         // reject调用后，state转化为失败态
+    //         this.state = 'rejected';
+    //         // 储存失败的原因
+    //         this.reason = reason;
+    //       }
+    //     };
+    //     // 如果executor执行报错，直接执行reject
+    //     try {
+    //       executor(resolve, reject);
+    //     } catch (err) {
+    //       reject(err);
+    //     }
+    //   }
+    // }
+    // console.log(new Promise(function(){}));
+
+    // function a(func, str) {
+    //   func(str)
+    // }
+
+    // function func(a) {
+    //   console.log(a);
+    // }
+
+    // a(func,'hello')
+    // class Promise1 {
+    //   constructor(executor) {
+    //     this.state = 'pending';
+    //     this.value = undefined;
+    //     this.reason = undefined;
+    //     // 成功存放的数组
+    //     this.onResolvedCallbacks = [];
+    //     // 失败存放法数组
+    //     this.onRejectedCallbacks = [];
+    //     let resolve = value => {
+    //       if (this.state === 'pending') {
+    //         this.state = 'fulfilled';
+    //         this.value = value;
+    //         // 一旦resolve执行，调用成功数组的函数
+    //         this.onResolvedCallbacks.forEach(fn => fn());
+    //       }
+    //     };
+    //     let reject = reason => {
+    //       if (this.state === 'pending') {
+    //         this.state = 'rejected';
+    //         this.reason = reason;
+    //         // 一旦reject执行，调用失败数组的函数
+    //         this.onRejectedCallbacks.forEach(fn => fn());
+    //       }
+    //     };
+    //     try {
+    //       executor(resolve, reject);
+    //     } catch (err) {
+    //       reject(err);
+    //     }
+    //   }
+    //   then(onFulfilled, onRejected) {
+    //     if (this.state === 'fulfilled') {
+    //       onFulfilled(this.value);
+    //     };
+    //     if (this.state === 'rejected') {
+    //       onRejected(this.reason);
+    //     };
+    //     // 当状态state为pending时
+    //     if (this.state === 'pending') {
+    //       // onFulfilled传入到成功数组
+    //       this.onResolvedCallbacks.push(() => {
+    //         onFulfilled(this.value);
+    //       })
+    //       // onRejected传入到失败数组
+    //       this.onRejectedCallbacks.push(() => {
+    //         onRejected(this.reason);
+    //       })
+    //     }
+    //   }
+    // }
+    // const promise = new Promise1((resolve, reject) => { resolve('success'), reject('rejected') })
+    // promise
+    //   .then((resolve) => {
+    //     console.log('resolve===>', resolve);
+    //   }, (reject) => {
+    //     console.log('reject===>', reject);
+    //   })
+    // .catch((err) => {
+    //   console.log('err===>', err);
+    // })
+
+
+    // function Person(name) {
+    //   this.name = name;
+    // }
+    // Person.prototype.getName = function () {
+    //   return this.name;
+    // }
+    // function Author(name, books) {
+    //   //执行Person构造函数，获得Person对象中属性
+    //   Person.call(this, name);
+    //   this.books = books;
+    // }
+    // //获得Person原型上的方法，实现原型继承
+    // extend(Author, Person);
+    // //在Author原型上继续添加我们需要的方法
+    // Author.prototype.getBooks = function () {
+    //   return this.books;
+    // }
+    // const person = new Person(111)
+    // console.log(person.getName());
+    // console.log(Person);
+
+    // const author = new Author(222)
+    // console.log(author.getName());
+    // console.log(Author);
+
+
+    // class Promise {
+    //   constructor(executor) {
+    //     // 初始化state为等待态
+    //     this.state = 'pending';
+    //     // 成功的值
+    //     this.value = undefined;
+    //     // 失败的原因
+    //     this.reason = undefined;
+    //     let resolve = value => {
+    //       // state改变,resolve调用就会失败
+    //       if (this.state === 'pending') {
+    //         // resolve调用后，state转化为成功态
+    //         this.state = 'fulfilled';
+    //         // 储存成功的值
+    //         this.value = value;
+    //       }
+    //     };
+    //     let reject = reason => {
+    //       // state改变,reject调用就会失败
+    //       if (this.state === 'pending') {
+    //         // reject调用后，state转化为失败态
+    //         this.state = 'rejected';
+    //         // 储存失败的原因
+    //         this.reason = reason;
+    //       }
+    //     };
+    //     // 如果executor执行报错，直接执行reject
+    //     try {
+    //       executor(resolve, reject);
+    //     } catch (err) {
+    //       reject(err);
+    //     }
+    //   }
+    // }
+    // console.log(new Promise((resolve, reject) => { }));
+
+    // class Promise {
+    //   constructor(executor) {
+    //     this.state = 'pending';
+    //     this.value = undefined;
+    //     this.reason = undefined;
+    //     // 成功存放的数组
+    //     this.onResolvedCallbacks = [];
+    //     // 失败存放法数组
+    //     this.onRejectedCallbacks = [];
+    //     let resolve = value => {
+    //       if (this.state === 'pending') {
+    //         this.state = 'fulfilled';
+    //         this.value = value;
+    //         // 一旦resolve执行，调用成功数组的函数
+    //         this.onResolvedCallbacks.forEach(fn => fn());
+    //       }
+    //     };
+    //     let reject = reason => {
+    //       if (this.state === 'pending') {
+    //         this.state = 'rejected';
+    //         this.reason = reason;
+    //         // 一旦reject执行，调用失败数组的函数
+    //         this.onRejectedCallbacks.forEach(fn => fn());
+    //       }
+    //     };
+    //     try {
+    //       // executor(resolve, reject);
+    //       executor('success', 'fail');
+    //     } catch (err) {
+    //       reject(err);
+    //     }
+    //   }
+    //   then(onFulfilled, onRejected) {
+    //     if (this.state === 'fulfilled') {
+    //       onFulfilled(this.value);
+    //     };
+    //     if (this.state === 'rejected') {
+    //       onRejected(this.reason);
+    //     };
+    //     // 当状态state为pending时
+    //     if (this.state === 'pending') {
+    //       // onFulfilled传入到成功数组
+    //       this.onResolvedCallbacks.push(() => {
+    //         onFulfilled(this.value);
+    //       })
+    //       // onRejected传入到失败数组
+    //       this.onRejectedCallbacks.push(() => {
+    //         onRejected(this.reason);
+    //       })
+    //     }
+    //   }
+    // }
+    // console.log(new Promise((resolve, reject) => { }));
+
+    // class Promise {
+    //   constructor(executor) {
+    //     this.state = 'pending';
+    //     this.value = undefined;
+    //     this.reason = undefined;
+    //     this.onResolvedCallbacks = [];
+    //     this.onRejectedCallbacks = [];
+    //     let resolve = value => {
+    //       if (this.state === 'pending') {
+    //         this.state = 'fulfilled';
+    //         this.value = value;
+    //         this.onResolvedCallbacks.forEach(fn => fn());
+    //       }
+    //     };
+    //     let reject = reason => {
+    //       if (this.state === 'pending') {
+    //         this.state = 'rejected';
+    //         this.reason = reason;
+    //         this.onRejectedCallbacks.forEach(fn => fn());
+    //       }
+    //     };
+    //     try {
+    //       executor(resolve, reject);
+    //     } catch (err) {
+    //       reject(err);
+    //     }
+    //   }
+    //   then(onFulfilled, onRejected) {
+    //     // 声明返回的promise2
+    //     let promise2 = new Promise((resolve, reject) => {
+    //       if (this.state === 'fulfilled') {
+    //         let x = onFulfilled(this.value);
+    //         // resolvePromise函数，处理自己return的promise和默认的promise2的关系
+    //         resolvePromise(promise2, x, resolve, reject);
+    //       };
+    //       if (this.state === 'rejected') {
+    //         let x = onRejected(this.reason);
+    //         resolvePromise(promise2, x, resolve, reject);
+    //       };
+    //       if (this.state === 'pending') {
+    //         this.onResolvedCallbacks.push(() => {
+    //           let x = onFulfilled(this.value);
+    //           resolvePromise(promise2, x, resolve, reject);
+    //         })
+    //         this.onRejectedCallbacks.push(() => {
+    //           let x = onRejected(this.reason);
+    //           resolvePromise(promise2, x, resolve, reject);
+    //         })
+    //       }
+    //     });
+    //     // 返回promise，完成链式
+    //     return promise2;
+    //   }
+    // }
+
+    test()
+  </script>
+</body>
+
+</html>

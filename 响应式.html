@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // function SetManager(name) {
+    //   this.manager = name;
+    //   console.log('this===>', this);
+    // }
+
+    // SetManager.prototype.getName = function () {
+    //   console.log(this.manager);
+    // };
+
+    // var SingletonSetManager = (function () {
+    //   var manager = null;
+    //   console.log(1111);
+    //   setTimeout(() => {
+    //     console.log(22222);
+    //   }, 3000)
+    //   return function (name) {
+    //     console.log('manager===>', manager);
+    //     console.log('name===>', name);
+    //     if (!manager) {
+    //       manager = new SetManager(name);
+    //     }
+
+    //     return manager;
+    //   }
+    // })();
+
+    // SingletonSetManager('a').getName(); // a
+    // SingletonSetManager('b').getName(); // a
+    // SingletonSetManager('c').getName(); // a
+
+    // function outerBubble() {
+    //   const hello = '气球被吹起来';
+
+    //   return function innerBuble(a) {
+    //     const world = '小气球被吹起来'
+    //     console.log(a);
+    //     return hello;
+    //     // world 即将死去，小气球会瘪下去
+    //   }
+    //   // 这时小气球瘪了，但是外面的大气球却不会瘪：hello 还活着
+    // }
+
+    // const bubble = outerBubble();
+    // bubble(11);
+    // bubble(22);
+
+    // function a() {
+    //   var i = 0;
+    //   console.log(3333);
+    //   function b() {
+    //     i++;
+    //     console.log(i);
+    //   }
+    //   return b;
+    // }
+
+    // var c = a();
+    // c();//？
+    // c();//？
+    // c();//？
+
+    // var num = new Array();
+    // for (var i = 0; i < 4; i++) {
+    //   num[i] = f1(i);
+    // }
+    // function f1(n) {
+    //   function f2() {
+    //     console.log(n);
+    //   }
+    //   return f2;
+    // }
+    // num[2](); //
+    // num[1]();
+    // num[0]();
+    // num[3]();
+
+    // var b = 0;
+    // if (true) {
+    //   b = 1;
+    //   function a() { };
+    //   b = 21;
+    //   console.log(b)
+    // }
+    // console.log(b);
+
+    // {
+    //   function foo() { }
+    //   foo = 1;
+    // }
+    // console.log(foo);
+
+    // {
+    //   function foo() { }
+    //   foo = 1;
+    //   function foo() { }
+    // }
+    // console.log(foo);
+
+    // {
+    //   function foo() { }
+    //   foo = 1;
+    //   function foo() { }
+    //   foo = 2;
+    // }
+    // console.log(foo);
+
+    // let val = 7
+    // function createAdder() {
+    //   function addNumbers(a, b) {
+    //     let ret = a + b
+    //     return ret
+    //   }
+    //   return addNumbers
+    // }
+    // let adder = createAdder()
+    // let sum = adder(val, 8)
+    // console.log('example of function returning a function: ', sum)
+
+    // var a = 0;
+    // var b = 0;
+    // function A(a) {
+    //   A = function (b) {
+    //     console.log(a + b++);
+    //   }
+    //   console.log(a++);
+    // }
+    // A(1);
+    // A(2);
+    // A(2);
+    // function A() {
+    //   let i = 1
+    //   console.log(++i);
+    // }
+    // A()
+    // const nums = [2, 7, 11, 15]
+    // const target = 9
+    // function getIndexArr(nums, target) {
+    //   let hashMap = {};
+    //   for (let i = 0; i < nums.length; i++) {
+    //     if (hashMap[target - nums[i]] !== void 0) {
+    //       return [hashMap[target - nums[i]], i];
+    //     } else {
+    //       hashMap[nums[i]] = i;
+    //     }
+    //   }
+    // }
+    // console.log(getIndexArr(nums, target));
+
+    // Function.prototype.myCall = function (context = globalThis) {
+    //   // 设置 fn 为调用 myCall 的方法
+    //   context.fn = this;
+
+    //   // 获取剩余参数
+    //   const otherArg = Array.from(arguments).slice(1);
+
+    //   // 调用这个方法，将剩余参数传递进去
+    //   context.fn(otherArg);
+
+    //   // 将这个方法的执行结果传给 result
+    //   let result = context.fn();
+
+    //   // 删除这个变量
+    //   delete context.fn;
+
+    //   // 返回 result 结果
+    //   return result;
+    // };
+
+    // this.a = 1;
+
+    // const fn = function () {
+    //   this.a = 2;
+    //   console.log(this.a);
+    // }
+
+    // fn.myCall(fn);
+
+    function a() {
+      return 666
+    }
+    const obj = {
+      aa: 111,
+      bb: 333
+    }
+    const aaa = obj.a()
+    console.log(aaa);
+  </script>
+</body>
+
+</html>
