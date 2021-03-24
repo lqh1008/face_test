@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // if 和 switch 条件语句或 for 和 while 循环语句，不像函数，它们不会创建一个新的作用域
+    // 无论fn函数将在哪里调用,要到创建这个函数的那个域”。 作用域中取值,这里强调的是“创建”，而不是“调用”
+    // var a = 0
+    // function A(a) {
+    //   // a = 1
+    //   // console.log(a);
+    // }
+    // A(222)
+    // console.log(a);
+
+    // function foo(a) {
+    //   function bar(c) {
+    //     console.log(a, b, c);
+    //   }
+    //   var b = a * 2
+    //   bar(b * 3)
+    // }
+    // foo(2)
+
+    // var a = 100
+    // function fn() {
+    //   a = 100000
+    //   var b = 200
+    //   console.log(a) // 这里的a在这里就是一个自由变量
+    //   console.log(b)
+    // }
+    // fn()
+
+    // var x = 10
+    // function fn() {
+    //   console.log(x)
+    // }
+    // function show(f) {
+    //   // var x = 20
+    //     (function () {
+    //       f()
+    //     })()
+    // }
+    // show(fn)
+
+    // var a = 10
+    // function fn() {
+    //   var b = 20
+    //   function bar() {
+    //     console.log(a + b) //30
+    //   }
+    //   return bar
+    // }
+    // var x = fn(),
+    //   b = 200
+    // x() //bar()
+
+
+    // 我们知道JavaScript属于解释型语言，JavaScript的执行分为：解释和执行两个阶段, 这两个阶段所做的事并不一样：
+    // 解释阶段：
+
+    // 词法分析
+    // 语法分析
+    // 作用域规则确定
+
+    // 执行阶段：
+
+    // 创建执行上下文
+    // 执行函数代码
+    // 垃圾回收
+
+    // JavaScript解释阶段便会确定作用域规则，因此作用域在函数定义时就已经确定了，而不是在函数调用时确定，但是执行上下文是函数执行之前创建的。执行上下文最明显的就是this的指向是执行时确定的。而作用域访问的变量是编写代码的结构确定的。
+    // 作用域和执行上下文之间最大的区别是：
+    // 执行上下文在运行时确定，随时可能改变；作用域在定义时就确定，并且不会改变。
+    // 一个作用域下可能包含若干个上下文环境。有可能从来没有过上下文环境（函数从来就没有被调用过）；有可能有过，现在函数被调用完毕后，上下文环境被销毁了；有可能同时存在一个或多个（闭包）。同一个作用域下，不同的调用会产生不同的执行上下文环境，继而产生不同的变量的值。
+
+    function test2() {
+      console.log(name);
+      name = "test2"
+      console.log(name);
+    }
+
+    function test1() {
+      name = "test1";
+      console.log(name);
+    }
+
+    function test3() {
+      console.log(this.name);
+      console.log(name);
+      var name = "test3"
+    }
+    test1();  //test1
+    test2();  //test1 test2
+    test3();  //test2  undefined
+
+    //text2中，name重新设置了全局变量。即name='text2'
+  </script>
+</body>
+
+</html>

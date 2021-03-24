@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var root = {
+      id: 1,
+      left: {
+        id: 2,
+        left: {
+          id: 4,
+        },
+        right: {
+          id: 5
+        }
+      },
+      right: {
+        id: 3,
+        left: {
+          id: 6
+        },
+        right: {
+          id: 7
+        }
+      }
+    }
+
+    // var res = []
+
+    // function DLR(root) {
+
+    //   if (root != null) {
+    //     res.push(root.id)
+    //     if (root.left) {
+    //       DLR(root.left)
+    //     }
+    //     if (root.right) {
+    //       DLR(root.right)
+    //     }
+    //   }
+    //   return res
+    // }
+
+    // console.log('递归先序遍历', DLR(root))
+
+
+    // function LDR(root) {
+
+    //   var res = [], arr = []
+    //   while (true) {
+    //     while (root != null) {
+    //       arr.push(root)
+    //       root = root.left
+    //     }
+    //     //终止条件：最后树遍历完了自然就结束
+    //     if (arr.length === 0) {
+    //       break;
+    //     }
+    //     let temp = arr.pop()
+    //     res.push(temp.id)
+    //     root = temp.right
+    //   }
+    //   return res
+    // }
+
+    // console.log('非递归中序遍历', LDR(root))
+
+    function DLR(root) {
+
+      var res = [], arr = []
+      if (root != null) {
+        arr.push(root)
+      }
+      while (arr.length > 0) {
+        var temp = arr.pop()
+        res.push(temp.id)
+        if (temp.right) { // 先放右子树再放左子树  取出来的时候才是先左后右
+          arr.push(temp.right)
+        }
+        if (temp.left) {
+          arr.push(temp.left)
+        }
+      }
+      return res
+    }
+
+    console.log('非递归先序遍历', DLR(root))
+
+
+  </script>
+</body>
+
+</html>

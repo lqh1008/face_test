@@ -27,29 +27,32 @@
     // new Add()
 
     const obj = {
-      add: () => {
-        console.log('add===>', this);
-        const addadd = setTimeout(() => {
-          console.log('addadd', this);
-        }, 1000)
-      },
+      // add: () => {
+      //   console.log('add===>', this);
+      //   const addadd = setTimeout(() => {
+      //     console.log('addadd', this);
+      //   }, 1000)
+      // },
       reduce() {
         console.log('reduce===>', this);
-        const reducereduce = () => {
+        const reducereduce = function() {
           console.log('reducereduce', this);
           setTimeout(() => {
             console.log('reducereduceInner', this);
           }, 1000)
         }
         reducereduce()
+        setTimeout(function(){
+          console.log(this,333333);
+        })
       },
-      sum: function () {
-        console.log('sum===>', this);
-      }
+      // sum: function () {
+      //   console.log('sum===>', this);
+      // }
     }
-    obj.add()
+    // obj.add()
     obj.reduce()
-    obj.sum()
+    // obj.sum()
 
     // const person = {
     //   lv: 1111
@@ -64,13 +67,15 @@
     // person.gao = 333
 
 
-    function a(){
-      function b(){
-        console.log(this);
-      }
-      b()
-    }
-    a()
+    // function a(){
+    //   function b(){
+    //     console.log(this);
+    //   }
+    //   b()
+    // }
+    // a()
+
+    //箭头函数的this指向的都是此函数的父级的this，如果不是箭头函数一律指向window
   </script>
 </body>
 
