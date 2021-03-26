@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    #box{
+      width: 1000px;
+      height: 1000px;
+      background: red;
+      
+    }
+    .tem{
+      margin: 0 auto;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    #box>div>div{
+      margin: 0 auto;
+      background: black;
+      /* display: inline-block; */
+    }
+
+    div.sub_box:nth-child(1){
+      width: 300px;
+      height: 200px;
+      /* vertical-align: middle; */
+
+    }
+
+    div.sub_box:nth-child(2){
+      width: 100px;
+      height: 100px;
+      /* vertical-align: middle; */
+
+    }
+
+    div.sub_box:nth-child(3){
+      width: 400px;
+      height: 500px;
+      /* vertical-align: middle; */
+
+    }
+
+  </style>
+  <div id='box'>
+    <div class="tem">
+      <div class="sub_box"></div>
+      <div class="sub_box"></div>
+      <div class="sub_box"></div>
+    </div>
+  </div>
+</body>
+</html>

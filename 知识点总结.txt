@@ -54,3 +54,12 @@ CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
 
 
 进入项目敲vue inspect可以看到webpack默认配置
+
+三、触发 BFC
+只要元素满足下面任一条件即可触发 BFC 特性：
+
+body 父元素
+浮动元素：float 除 none 以外的值
+绝对定位元素：position (absolute、fixed)
+display 为 inline-block、table-cells、flex
+overflow 除了 visible 以外的值 (hidden、auto、scroll)
